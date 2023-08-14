@@ -1,0 +1,5 @@
+completed subscription Page
+need to add maps Pages
+need to continue with payment Page
+    i)create forms for each payment method
+    ii)add css

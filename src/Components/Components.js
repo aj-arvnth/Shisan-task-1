@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+
 export const Container = styled.div`
 background-color: #fff;
 opacity: 80%;
@@ -7,8 +8,10 @@ justify-content: center;
 border-radius: 05px;
 box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25);
 position: relative;
+margin-top: 100px; 
 overflow: hidden;
-width: 678px;
+width: 1000px;
+height: 500px;
 max-width: 100%;
 min-height: 400px;
 `;
@@ -53,6 +56,13 @@ height: 100%;
 text-align: center;
 `;
 
+export const Navbar = styled.h2`
+    margin-right: 280px;
+    display: flex;
+    align-items: right;
+    justify-content: right;
+`;
+
 export const Title = styled.h2`
 font-weight: bold;
 margin: 0;
@@ -89,6 +99,46 @@ export const GhostButton = styled(Button)`
 background-color: transparent;
 border-color: #ffffff;
 `;
+
+
+
+export const NavbarWrapper = styled.nav`
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+`;
+
+export const NavItem = styled.li`
+  list-style: none;
+  padding: 0 20px;
+  position: relative;
+`;
+
+export const NavLink = styled.a`
+  text-align: left;
+  background-color: none;
+  text-decoration: none;
+  
+  font-size: 15px;
+  font-weight: 600;
+  color: black;
+  transition: 0.3s ease-out;
+
+  &:hover {
+    color: black;
+
+     &::after {
+      content: "";
+      width: 35%;
+      height: 2px;
+      background-color: black;
+      position: absolute;
+      bottom: -4px;
+      left: 20px;
+    } 
+  }
+`;
+
 
 export const Anchor = styled.a`
 color: #333;

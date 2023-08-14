@@ -1,58 +1,57 @@
 import React from "react";
-import * as Components from './Components';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import AdminLogin from "./Pages/Login/AdminLogin";
+import UserLogin from "./Pages/Login/UserLogin";
+import LandingPage from "./landingpage";
+import SignUp from "./Pages/Login/SignUp";
+import BuyerLogin from "./Pages/Buyer/BuyersLogin";
+import BrokerLogin from "./Pages/Broker/BrokersLogin";
+import BusinessOwnersLogin from "./Pages/BusinessOwner/BusinessOwnersLogin";
+import ProfessionalServicesLogin from "./Pages/ProfessionalService/ProfessionalServicesLogin";
+import Buyer_Landing from "./Pages/Buyer/Buyer_landing";
+import Business_Owner_Landing from "./Pages/BusinessOwner/Business_Owners_landing";
+import Professional_Service_Landing from "./Pages/ProfessionalService/Professional_Services_landing";
+import Broker_Landing from "./Pages/Broker/Broker_landing";
+import ForgetPass from "./Pages/Login/ForgetPass";
+import SubscriptionPage from "./Pages/Subscription/SubscriptionPage";
+import PaymentPage from "./Pages/Payment/PaymentPage";
+import Map from "./Pages/Map";
 
 function App() {
-    const [signIn, toggle] = React.useState(true);
-     return(
-         <Components.Container>
-             <Components.SignUpContainer signinIn={signIn}>
-                 <Components.Form>
-                     <Components.Title>Create Account</Components.Title>
-                     <Components.Input type='text' placeholder='Name' />
-                     <Components.Input type='email' placeholder='Email' />
-                     <Components.Input type='password' placeholder='Password' />
-                     <Components.Button>Sign Up</Components.Button>
-                 </Components.Form>
-             </Components.SignUpContainer>
+  return (
+    <div className="App">
+      <BrowserRouter>
+        <Routes>
+          <Route path="/admin" element={<AdminLogin />} />
+          <Route path="/user" element={<UserLogin />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/subscription" element={<SubscriptionPage />} />
+          <Route path="/payment" element={<PaymentPage />} />
+          <Route path="/map" element={<Map />} />
 
-             <Components.SignInContainer signinIn={signIn}>
-                  <Components.Form>
-                      <Components.Title>Sign in</Components.Title>
-                      <Components.Input type='email' placeholder='Email' />
-                      <Components.Input type='password' placeholder='Password' />
-                      <Components.Anchor href='#'>Forgot your password?</Components.Anchor>
-                      <Components.Button>Sigin In</Components.Button>
-                  </Components.Form>
-             </Components.SignInContainer>
-
-             <Components.OverlayContainer signinIn={signIn}>
-                 <Components.Overlay signinIn={signIn}>
-
-                 <Components.LeftOverlayPanel signinIn={signIn}>
-                     <Components.Title>Already a user ?</Components.Title>
-                     <Components.Paragraph>
-                         Welcome back, sign up using the below button.
-                     </Components.Paragraph>
-                     <Components.GhostButton onClick={() => toggle(true)}>
-                         Sign In
-                     </Components.GhostButton>
-                     </Components.LeftOverlayPanel>
-
-                     <Components.RightOverlayPanel signinIn={signIn}>
-                       <Components.Title>New user !</Components.Title>
-                       <Components.Paragraph>
-                           Please enter your details to get connected with us.
-                       </Components.Paragraph>
-                           <Components.GhostButton onClick={() => toggle(false)}>
-                               Sigin Up
-                           </Components.GhostButton> 
-                     </Components.RightOverlayPanel>
- 
-                 </Components.Overlay>
-             </Components.OverlayContainer>
-
-         </Components.Container>
-     )
+          <Route path="/buyer_lo" element={<BuyerLogin />} />
+          <Route path="/broker_lo" element={<BrokerLogin />} />
+          <Route path="/business_owners_lo" element={<BusinessOwnersLogin />} />
+          <Route path="/forgetpass" element={<ForgetPass />} />
+          <Route
+            path="/professional_services_lo"
+            element={<ProfessionalServicesLogin />}
+          />
+          <Route path="/buyer_landing" element={<Buyer_Landing />} />
+          <Route
+            path="/business_owner_landing"
+            element={<Business_Owner_Landing />}
+          />
+          <Route
+            path="/professional_service_landing"
+            element={<Professional_Service_Landing />}
+          />
+          <Route path="/broker_landing" element={<Broker_Landing />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
+  );
 }
 
 export default App;
