@@ -60,7 +60,7 @@ const SubscriptionPage = () => {
           Continue
         </Link>
       ) : (
-        <p>Please select a subscription tier</p>
+        <p style={{color:"whitesmoke"}}>Please select a subscription tier</p>
       )}
     </div>
   </div>
