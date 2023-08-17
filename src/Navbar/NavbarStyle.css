@@ -41,6 +41,36 @@
     transition: color 0.3s ease-out;
 }
 
+.navbar-item button {
+
+    text-decoration: none;
+    background-color: transparent;
+    font-family: "Montserrat", sans-serif;
+    border: 0px ;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    position: relative;
+    transition: color 0.3s ease-out;
+}
+
+.navbar-item button:hover{
+  color: #ce4d4d;
+
+}
+
+.navbar-item button:hover::after {
+  content: "";
+  justify-content: left;
+  margin-right:0px;
+  width: 30%;
+  height: 1.5px;
+  background-color: rgb(173, 33, 33);
+  position: absolute;
+  bottom: -4px;
+  left: 15%;
+}
+
 .navbar-item a:hover {
   color: #ce4d4d;
 }

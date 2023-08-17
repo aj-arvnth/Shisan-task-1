@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import DatePicker from "react-datepicker";
+import { useNavigate } from "react-router-dom";
 import "react-datepicker/dist/react-datepicker.css";
 import "./PaymentPage.css";
 
 const PaymentPage = () => {
   const [selectedMethod, setSelectedMethod] = useState("card");
-
+  const navigate = useNavigate();
   const handleMethodChange = (method) => {
     setSelectedMethod(method);
   };
@@ -28,6 +29,12 @@ const PaymentPage = () => {
         onClick={() => handleMethodChange("upi")}
       >
         UPI
+      </div>
+      <div
+        className={`payment-method `}
+        onClick={() => navigate(-1)}
+      >
+        Back to Subscription
       </div>
     </div>
     <div className="payment-form-container">

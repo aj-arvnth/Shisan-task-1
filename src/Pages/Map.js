@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import mapboxgl from "mapbox-gl";
+import { useNavigate } from "react-router-dom";
 import MapboxDirections from "@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions";
 import "mapbox-gl/dist/mapbox-gl.css";
 import "mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
 import "@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions.css";
+import Navbar from "../Navbar/Navbar";
 
 mapboxgl.accessToken =
   "pk.eyJ1IjoiYWotYXJ2bnRoIiwiYSI6ImNsbDNkZDl3YjBicjEzaXBscDF2d213MGUifQ.3REymEz7NRVoqQyO3UAwwg";
@@ -11,6 +13,7 @@ mapboxgl.accessToken =
 const Map = () => {
   const [map, setMap] = useState(null);
   const [userLocation, setUserLocation] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const initializeMap = () => {
@@ -67,6 +70,7 @@ const Map = () => {
 
   return (
   <>
+  
   <style>
         {`
           body {
@@ -77,7 +81,25 @@ const Map = () => {
           }
         {/* `}
       </style> 
+      
   <div id="map" style={{ width: "100%", height: "100vh" }} />
+  <button
+  className="back-button"
+  onClick={() =>navigate(-1)}
+  style={{
+    position: "absolute",
+    top: "20px",
+    right: "20px",
+    zIndex: 1,
+    backgroundColor: "#fff",
+    padding: "10px 20px",
+    border: "1px solid #ccc",
+    borderRadius: "4px",
+    cursor: "pointer",
+  }}
+>
+  Back
+</button>
   </>);
 };
 

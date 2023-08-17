@@ -90,6 +90,7 @@ function BrokerLogin() {
             <Components.Paragraph>
               Please fill in the necessary details to get connected.
             </Components.Paragraph>
+            <Components.GhostButton onClick={() =>navigate(-1)}>Back</Components.GhostButton>
           </Components.RightOverlayPanel>
         </Components.Overlay>
       </Components.OverlayContainer>

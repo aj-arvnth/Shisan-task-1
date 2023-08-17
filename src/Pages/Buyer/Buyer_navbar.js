@@ -1,14 +1,22 @@
 import React from "react";
-import "../../Navbar/NavbarStyle.css"; 
-import { Link } from "react-router-dom";
+import "../../Navbar/NavbarStyle.css";
+import { Link, useNavigate } from "react-router-dom";
+
 
 const Buyer_navbar = () => {
+  const navigate = useNavigate();
   return (
     <nav className="navbar">
+    
       <div className="navbar-logo">
         <img src="logo.png" alt="Logo" />
+        
       </div>
+      
       <ul className="navbar-menu">
+        <li className="navbar-item">
+          <button onClick={() => navigate(-1)}>Back</button>
+        </li>
         <li className="navbar-item">
           <Link to="/map">Locator</Link>
         </li>
