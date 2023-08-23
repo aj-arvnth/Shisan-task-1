@@ -1,13 +1,16 @@
 import React from "react";
-
+import BasicTable from "../../Table/BasicTable";
 import Broker_navbar from "./Broker_navbar";
+import data from "../../Table/TableDatas";
+
 function Broker_Landing() {
   return (
     <>
       <Broker_navbar />
-      <h2 style={{ color: "white", textAlign: "center" }}>
-        BROKER LANDING PAGE{" "}
-      </h2>
+      <BasicTable data={data} />
+      <h1 style={{ color: "white", textAlign: "center" }}>
+        BROKER LANDING PAGE
+      </h1>
     </>
   );
 }

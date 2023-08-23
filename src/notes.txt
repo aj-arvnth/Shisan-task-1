@@ -1,15 +1,3 @@
-to do(task 3):
-a)create table in buyers page and business owners page with following columns:
-    1)sno
-    2)company name
-    3)status - bool - active or not
-    4)evaluation - number- money
-    5)address
-    6)locate - get directions
-    7)directions fetch
-
-b)search bar in these pages to fetch company details from the table
-
 
 back button:
 import UndoIcon from "@mui/icons-material/Undo";

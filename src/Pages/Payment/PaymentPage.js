@@ -1,10 +1,17 @@
 import React, { useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import DatePicker from "react-datepicker";
-import { useNavigate } from "react-router-dom";
+import { Toaster, toast } from "react-hot-toast";
+import * as Components from "../../Components/PaymentComponent";
+import tiers from "../Subscription/SubscriptionData";
 import "react-datepicker/dist/react-datepicker.css";
 import "./PaymentPage.css";
 
 const PaymentPage = () => {
+  const [signIn, toggle] = React.useState(true);
+  const { subscriptionIndex } = useParams();
+  const parsedIndex = parseInt(subscriptionIndex, 10);
+  const selectedTier = tiers[parsedIndex];
   const [selectedMethod, setSelectedMethod] = useState("card");
   const navigate = useNavigate();
   const handleMethodChange = (method) => {
@@ -12,39 +19,62 @@ const PaymentPage = () => {
   };
 
   return (
-    <div className="payment-container">
-    <div className="payment-methods">
-      <div
-        className={`payment-method ${
-          selectedMethod === "card" ? "active" : ""
-        }`}
-        onClick={() => handleMethodChange("card")}
-      >
-        Credit/Debit Card
-      </div>
-      <div
-        className={`payment-method ${
-          selectedMethod === "upi" ? "active" : ""
-        }`}
-        onClick={() => handleMethodChange("upi")}
-      >
-        UPI
-      </div>
-      <div
-        className={`payment-method `}
-        onClick={() => navigate(-1)}
-      >
-        Back to Subscription
-      </div>
-    </div>
-    <div className="payment-form-container">
-      <div className="payment-options">
-        {selectedMethod === "card" && <CardPaymentForm />}
-        {selectedMethod === "upi" && <UpiPaymentForm />}
-      </div>
-    </div>
-  </div>
-);
+    <>
+      
+      <Components.Container>
+        <Components.SignInContainer signinIn={signIn}>
+        <Components.PaymentMethods>
+        <Components.PaymentMethod
+          className={`payment-method ${
+            selectedMethod === "card" ? "active" : ""
+          }`}
+          onClick={() => handleMethodChange("card")}
+        >
+          Credit/Debit Card
+        </Components.PaymentMethod>
+        <Components.PaymentMethod
+          className={`payment-method ${
+            selectedMethod === "upi" ? "active" : ""
+          }`}
+          onClick={() => handleMethodChange("upi")}
+        >
+          UPI
+        </Components.PaymentMethod>
+        {/* <Components.PaymentMethod className={`payment-method `} onClick={() => navigate(-1)}>
+          Back to Subscription page
+        </Components.PaymentMethod> */}
+        </Components.PaymentMethods>
+        <Toaster position="top-right" />
+          <Components.Form>
+            {selectedMethod === "card" && <CardPaymentForm />}
+            {selectedMethod === "upi" && <UpiPaymentForm />}
+          </Components.Form>
+        </Components.SignInContainer>
+        <Components.OverlayContainer signinIn={signIn}>
+          <Components.Overlay signinIn={signIn}>
+            <Components.RightOverlayPanel signinIn={signIn}>
+            <Components.Title>Subscription Tier Chosen</Components.Title>
+              {selectedTier && (
+                <div className="selected-subscription">
+                  <h3>{selectedTier.title} Subscription</h3>
+                  <p className="price">
+                    ${selectedTier.price.toFixed(2)} / month
+                  </p>
+                  <ul className="features">
+                    {selectedTier.features.map((feature, index) => (
+                      <li key={index}>{feature}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              <Components.GhostButton onClick={()=>navigate(-1)}>Back</Components.GhostButton>
+            </Components.RightOverlayPanel>
+          </Components.Overlay>
+        </Components.OverlayContainer>
+      </Components.Container>
+    </>
+  );
 };
 
 const CardPaymentForm = () => {
@@ -61,7 +91,7 @@ const CardPaymentForm = () => {
   const [customerNameError, setCustomerNameError] = useState("");
   const [mobileNumberError, setMobileNumberError] = useState("");
 
-  const handlePaymentSubmit = async () => {
+  const handlePaymentSubmit = async (e) => {
     setCardNumberError("");
     setExpiryError("");
     setCVVError("");
@@ -77,6 +107,8 @@ const CardPaymentForm = () => {
     const isCVVValid = cvv.match(cvvRegex);
     const isExpiryValid = expiry !== null && expiry > new Date();
     const isMobileNumberValid = mobileNumber.match(mobileNumberRegex);
+
+    e.preventDefault();
 
     if (!isCardNumberValid) {
       setCardNumberError("Invalid card number");
@@ -94,10 +126,18 @@ const CardPaymentForm = () => {
       setMobileNumberError("Invalid mobile number");
     }
 
-    if (isCardNumberValid && isExpiryValid && isCVVValid && customerName && isMobileNumberValid) {
+    if (
+      isCardNumberValid &&
+      isExpiryValid &&
+      isCVVValid &&
+      customerName &&
+      isMobileNumberValid
+    ) {
       // Process the payment
       // ...
-      alert("Payment successful!");
+      toast.success(
+        "Payment Successful !!!"
+      );
     }
   };
 
@@ -110,72 +150,102 @@ const CardPaymentForm = () => {
   };
 
   return (
-    <div className="payment-form">
+    <>
+      {/* <div className="payment-form"> */}
       {/* <h2>Secure Payment</h2> */}
-      <div className="input-group">
-        <label>Customer Name</label>
-        <input
-          type="text"
-          value={customerName}
-          onChange={(e) => setCustomerName(e.target.value)}
-          placeholder="Enter your name"
-        />
-        {customerNameError && (
-          <span className="error-message">{customerNameError}</span>
-        )}
-      </div>
-      <div className="input-group">
-        <label>Mobile Number</label>
-        <input
-          type="text"
-          value={mobileNumber}
-          onChange={(e) => setMobileNumber(e.target.value)}
-          maxLength="10"
-          placeholder="Enter your mobile number"
-        />
-        {mobileNumberError && (
-          <span className="error-message">{mobileNumberError}</span>
-        )}
-      </div>
-      <div className="input-group">
-        <label>Card Number</label>
-        <input
-          type="text"
-          value={cardNumber}
-          onChange={handleCardNumberChange}
-          maxLength="19"
-          placeholder="1234-5678-9012-3456"
-        />
-        {cardNumberError && (
-          <span className="error-message">{cardNumberError}</span>
-        )}
-      </div>
-      <div className="input-group">
-        <label>Expiry Date (MM/YY)</label>
+      {/* <div className="input-group"> */}
+      {/* <label>Customer Name</label> */}
+      <Components.Title>Credit/Debit Card Payment</Components.Title>
+      <Components.Input
+        type="text"
+        value={customerName}
+        onChange={(e) => setCustomerName(e.target.value)}
+        placeholder="Customer Name"
+      />
+      <Components.ErrorMessage>{customerNameError}</Components.ErrorMessage>
+
+      {/* {customerNameError && (
+        <span className="error-message">{customerNameError}</span>
+      )} */}
+      {/* </div> */}
+      {/* <div className="input-group"> */}
+      {/* <label>Mobile Number</label> */}
+      <Components.Input
+        type="text"
+        value={mobileNumber}
+        onChange={(e) => setMobileNumber(e.target.value)}
+        maxLength="10"
+        placeholder="Mobile Number"
+      />
+      <Components.ErrorMessage>{mobileNumberError} </Components.ErrorMessage>
+      {/* {mobileNumberError && (
+        <span className="error-message">{mobileNumberError}</span>
+        
+      )} */}
+      {/* </div> */}
+      {/* <div className="input-group"> */}
+      {/* <label>Card Number</label> */}
+      <Components.Input
+        type="text"
+        value={cardNumber}
+        onChange={handleCardNumberChange}
+        maxLength="19"
+        placeholder="Enter your 16 digits credit/debit card number"
+      />
+      <Components.ErrorMessage>{cardNumberError} </Components.ErrorMessage>
+
+      {/* {cardNumberError && (
+        <span className="error-message">{cardNumberError}</span>
+      )} */}
+      {/* </div> */}
+      {/* <div className="input-group"> */}
+      {/* <label>Expiry Date (MM/YY)</label> */}
+      <Components.DatePickerContainer>
+        <span
+          style={{
+            fontFamily: "Arial",
+            color: "rgb(130,130,130)",
+            fontSize: "13px",
+            marginRight: "10px",
+          }}
+        >
+          Expiry date:
+        </span>
         <DatePicker
           selected={expiry}
           onChange={(date) => setExpiry(date)}
           dateFormat="MM/yy"
           showMonthYearPicker
           placeholderText="MM/YY"
+          className="custom-datepicker" // Add a custom class name for the DatePicker
         />
-        {expiryError && <span className="error-message">{expiryError}</span>}
-      </div>
-      <div className="input-group">
-        <label>CVV</label>
-        <input
-          type="password"
-          value={cvv}
-          onChange={(e) => setCVV(e.target.value)}
-          maxLength="3"
-          placeholder="123"
-        />
-        {cvvError && <span className="error-message">{cvvError}</span>}
-      </div>
-      <button className="payment-button" onClick={handlePaymentSubmit}>
+        </Components.DatePickerContainer>
+    
+      <Components.ErrorMessage>{expiryError} </Components.ErrorMessage>
+      
+      {/* {expiryError && <span className="error-message">{expiryError}</span>} */}
+      {/* </div> */}
+      {/* <div className="input-group"> */}
+      {/* <label>CVV</label> */}
+      <Components.Input
+        type="password"
+        value={cvv}
+        onChange={(e) => setCVV(e.target.value)}
+        maxLength="3"
+        placeholder="Enter CVV "
+      />
+      <Components.ErrorMessage>{cvvError} </Components.ErrorMessage>
+
+      {/* {cvvError && <span className="error-message">{cvvError}</span>} */}
+      {/* </div> */}
+      <Components.Button
+        className="payment-button"
+        onClick={handlePaymentSubmit}
+      >
         {isProcessing ? "Processing..." : "Make Payment"}
-      </button>
-    </div>
+      </Components.Button>
+      {/* // </div> */}
+    </>
   );
 };
 
@@ -189,7 +259,7 @@ const UpiPaymentForm = () => {
   const [customerNameError, setCustomerNameError] = useState("");
   const [mobileNumberError, setMobileNumberError] = useState("");
 
-  const handlePaymentSubmit = async () => {
+  const handlePaymentSubmit = async (e) => {
     setUpiIdError("");
     setCustomerNameError("");
     setMobileNumberError("");
@@ -197,7 +267,7 @@ const UpiPaymentForm = () => {
     // const upiIdRegex = /^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,4}$/;
     const upiIdRegex = /^[a-zA-Z0-9.\-_]{2,49}@[a-zA-Z._]{2,49}$/;
     const mobileNumberRegex = /^\d{10}$/;
-
+    e.preventDefault();
     const isUpiIdValid = upiId.match(upiIdRegex);
     const isMobileNumberValid = mobileNumber.match(mobileNumberRegex);
 
@@ -214,52 +284,66 @@ const UpiPaymentForm = () => {
     if (isUpiIdValid && customerName && isMobileNumberValid) {
       // Process the payment
       // ...
-      alert("Payment successful!");
+      toast.success(
+        "Payment Successful !!!"
+      );
     }
   };
 
   return (
-    <div className="payment-form">
+    <>
+      {/* // <div className="payment-form"> */}
       {/* <h2>UPI Payment</h2> */}
-      <div className="input-group">
-        <label>Customer Name</label>
-        <input
-          type="text"
-          value={customerName}
-          onChange={(e) => setCustomerName(e.target.value)}
-          placeholder="Enter your name"
-        />
-        {customerNameError && (
-          <span className="error-message">{customerNameError}</span>
-        )}
-      </div>
-      <div className="input-group">
-        <label>Mobile Number</label>
-        <input
-          type="text"
-          value={mobileNumber}
-          onChange={(e) => setMobileNumber(e.target.value)}
-          maxLength="10"
-          placeholder="Enter your mobile number"
-        />
-        {mobileNumberError && (
-          <span className="error-message">{mobileNumberError}</span>
-        )}
-      </div>
-      <div className="input-group">
-        <label>Enter UPI ID</label>
-        <input
-          type="text"
-          value={upiId}
-          onChange={(e) => setUpiId(e.target.value)}
-          placeholder="example@upi"
-        />
-        {upiIdError && <span className="error-message">{upiIdError}</span>}
-      </div>
-      <button className="payment-button" onClick={handlePaymentSubmit}>
+      {/* <div className="input-group"> */}
+      {/* <label>Customer Name</label> */}
+      <Components.Title>UPI Payment</Components.Title>
+      <Components.Input
+        type="text"
+        value={customerName}
+        onChange={(e) => setCustomerName(e.target.value)}
+        placeholder="Enter your Name"
+      />
+      <Components.ErrorMessage>{customerNameError} </Components.ErrorMessage>
+{/* 
+      {customerNameError && (
+        <span className="error-message">{customerNameError}</span>
+      )} */}
+      {/* </div> */}
+      {/* <div className="input-group"> */}
+      {/* <label>Mobile Number</label> */}
+      <Components.Input
+        type="text"
+        value={mobileNumber}
+        onChange={(e) => setMobileNumber(e.target.value)}
+        maxLength="10"
+        placeholder="Enter your mobile number"
+      />
+      <Components.ErrorMessage>{mobileNumberError}</Components.ErrorMessage>
+
+      {/* {mobileNumberError && (
+        <span className="error-message">{mobileNumberError}</span>
+      )} */}
+      {/* </div> */}
+      {/* <div className="input-group"> */}
+      {/* <label>Enter UPI ID</label> */}
+      <Components.Input
+        type="text"
+        value={upiId}
+        onChange={(e) => setUpiId(e.target.value)}
+        placeholder="Enter your UPI ID : example@upi"
+      />
+      <Components.ErrorMessage>{upiIdError}</Components.ErrorMessage>
+
+      {/* {upiIdError && <span className="error-message">{upiIdError}</span>} */}
+      {/* </div> */}
+      <Components.Button
+        className="payment-button"
+        onClick={handlePaymentSubmit}
+      >
         {isProcessing ? "Processing..." : "Make Payment"}
-      </button>
-    </div>
+      </Components.Button>
+      {/* // </div> */}
+    </>
   );
 };
 

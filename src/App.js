@@ -16,6 +16,8 @@ import ForgetPass from "./Pages/Login/ForgetPass";
 import SubscriptionPage from "./Pages/Subscription/SubscriptionPage";
 import PaymentPage from "./Pages/Payment/PaymentPage";
 import Map from "./Pages/Map";
+import BasicTable from "./Table/BasicTable";
+import data from "./Table/TableDatas";
 
 function App() {
   return (
@@ -26,10 +28,10 @@ function App() {
           <Route path="/user" element={<UserLogin />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/" element={<LandingPage />} />
+          <Route path="/table" element={<BasicTable data={data} />} />
           <Route path="/subscription" element={<SubscriptionPage />} />
-          <Route path="/payment" element={<PaymentPage />} />
+          <Route path="/payment/:subscriptionIndex" element={<PaymentPage />} />
           <Route path="/map" element={<Map />} />
-
           <Route path="/buyer_lo" element={<BuyerLogin />} />
           <Route path="/broker_lo" element={<BrokerLogin />} />
           <Route path="/business_owners_lo" element={<BusinessOwnersLogin />} />

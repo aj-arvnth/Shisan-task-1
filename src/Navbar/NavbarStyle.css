@@ -1,9 +1,14 @@
-
+*{
+  margin: 0;
+  padding: 0;
+}
 .navbar {
   display: flex;
     height: 75px;
     width: 1535px;
-    margin-bottom: 475px;
+    margin-bottom: 485px;
+    /* margin-top: 30px; */
+    /* position: fixed; */
     align-items: center;
     justify-content: space-between;
     /* background-color: #0b0b0b; */
