@@ -1,10 +1,10 @@
 
 
 .table-container {
-    margin: -410px 40px 0px 40px;
+    margin: 155px 20px 0px 20px;
     max-width: 95%; 
     overflow-x: auto;
-    position: fixed; 
+    position: absolute; 
 }
 
 .custom-table {
@@ -32,13 +32,14 @@
     width: 250px;
     height: 25px;
     top: 110px; 
-    right: 40px; 
+    right: 55px; 
 }
 
 .table-header-cell {
     padding: 10px;
     background-color: #c6c336;
     font-weight: bold !important;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25);
     border: none;
     width: 10px;
 }

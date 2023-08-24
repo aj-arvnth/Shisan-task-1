@@ -18,6 +18,7 @@ import PaymentPage from "./Pages/Payment/PaymentPage";
 import Map from "./Pages/Map";
 import BasicTable from "./Table/BasicTable";
 import data from "./Table/TableDatas";
+import NewMap from "./Pages/NewMap";
 
 function App() {
   return (
@@ -32,6 +33,8 @@ function App() {
           <Route path="/subscription" element={<SubscriptionPage />} />
           <Route path="/payment/:subscriptionIndex" element={<PaymentPage />} />
           <Route path="/map" element={<Map />} />
+          <Route path="/newmap" element={<NewMap />} />
+
           <Route path="/buyer_lo" element={<BuyerLogin />} />
           <Route path="/broker_lo" element={<BrokerLogin />} />
           <Route path="/business_owners_lo" element={<BusinessOwnersLogin />} />

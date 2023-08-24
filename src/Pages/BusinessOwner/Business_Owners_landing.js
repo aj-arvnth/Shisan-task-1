@@ -6,10 +6,10 @@ function Business_Owner_Landing() {
   return (
     <>
       <Business_Owner_navbar />
+      <h2 style={{ color: "#c6c336", textAlign: "left",position:"absolute",margin:"110px 0px 0px 25px" }}>BUYER'S TABLE</h2>
+
       <BasicTable data={data}/>
-      <h2 style={{ color: "white", textAlign: "center" }}>
-        BUSINESS OWNER LANDING PAGE
-      </h2>
+
     </>
   );
 }

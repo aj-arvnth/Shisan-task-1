@@ -6,8 +6,8 @@ export const Container = styled.div`
   justify-content: center;
   border-radius: 05px;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25);
-  position: relative;
-  margin-top: 100px;
+  position: absolute;
+  margin: 105px 50px 0px 250px;
   overflow: hidden;
   width: 1000px;
   height: 500px;

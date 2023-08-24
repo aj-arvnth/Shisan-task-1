@@ -23,14 +23,14 @@ const Broker_navbar = () => {
           <Link to="/">Home</Link>
         </li>
 
-        <li className="navbar-item navbar-dropdown">
+        {/* <li className="navbar-item navbar-dropdown">
           <a href="#">Login</a>
           <div className="dropdown-content">
             <Link to="/user">User</Link>
             <Link to="/admin">Admin</Link>
             <Link to="/signup">Signup</Link>
           </div>
-        </li>
+        </li> */}
       </ul>
     </nav>
   );

@@ -7,10 +7,10 @@ function Broker_Landing() {
   return (
     <>
       <Broker_navbar />
-      <BasicTable data={data} />
-      <h1 style={{ color: "white", textAlign: "center" }}>
+      
+      <h2 style={{ color: "white", textAlign: "center",position:"absolute",margin:"630px 0px 0px 600px" }}>
         BROKER LANDING PAGE
-      </h1>
+      </h2>
     </>
   );
 }
