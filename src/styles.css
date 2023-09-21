@@ -7,7 +7,8 @@
 }
 
 body {
-  background-image: url('E:\Shisan-tech\Login\shisan-task-login\public\black-paper-background.webp');
+  /* background-image: url('E:\Shisan-tech\Login\shisan-task-login\public\black-paper-background.webp'); */
+  background-color: black;
   /* background-image: url('../public/5153829.jpg'); */
   background-size: cover;
   display: flex;
