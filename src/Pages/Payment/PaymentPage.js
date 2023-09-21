@@ -40,9 +40,6 @@ const PaymentPage = () => {
         >
           UPI
         </Components.PaymentMethod>
-        {/* <Components.PaymentMethod className={`payment-method `} onClick={() => navigate(-1)}>
-          Back to Subscription page
-        </Components.PaymentMethod> */}
         </Components.PaymentMethods>
         <Toaster position="top-right" />
           <Components.Form>
@@ -151,10 +148,7 @@ const CardPaymentForm = () => {
 
   return (
     <>
-      {/* <div className="payment-form"> */}
-      {/* <h2>Secure Payment</h2> */}
-      {/* <div className="input-group"> */}
-      {/* <label>Customer Name</label> */}
+     
       <Components.Title>Credit/Debit Card Payment</Components.Title>
       <Components.Input
         type="text"
@@ -164,12 +158,7 @@ const CardPaymentForm = () => {
       />
       <Components.ErrorMessage>{customerNameError}</Components.ErrorMessage>
 
-      {/* {customerNameError && (
-        <span className="error-message">{customerNameError}</span>
-      )} */}
-      {/* </div> */}
-      {/* <div className="input-group"> */}
-      {/* <label>Mobile Number</label> */}
+
       <Components.Input
         type="text"
         value={mobileNumber}
@@ -178,13 +167,7 @@ const CardPaymentForm = () => {
         placeholder="Mobile Number"
       />
       <Components.ErrorMessage>{mobileNumberError} </Components.ErrorMessage>
-      {/* {mobileNumberError && (
-        <span className="error-message">{mobileNumberError}</span>
-        
-      )} */}
-      {/* </div> */}
-      {/* <div className="input-group"> */}
-      {/* <label>Card Number</label> */}
+     
       <Components.Input
         type="text"
         value={cardNumber}
@@ -194,12 +177,6 @@ const CardPaymentForm = () => {
       />
       <Components.ErrorMessage>{cardNumberError} </Components.ErrorMessage>
 
-      {/* {cardNumberError && (
-        <span className="error-message">{cardNumberError}</span>
-      )} */}
-      {/* </div> */}
-      {/* <div className="input-group"> */}
-      {/* <label>Expiry Date (MM/YY)</label> */}
       <Components.DatePickerContainer>
         <span
           style={{
@@ -217,16 +194,12 @@ const CardPaymentForm = () => {
           dateFormat="MM/yy"
           showMonthYearPicker
           placeholderText="MM/YY"
-          className="custom-datepicker" // Add a custom class name for the DatePicker
+          className="custom-datepicker" 
         />
         </Components.DatePickerContainer>
     
       <Components.ErrorMessage>{expiryError} </Components.ErrorMessage>
-      
-      {/* {expiryError && <span className="error-message">{expiryError}</span>} */}
-      {/* </div> */}
-      {/* <div className="input-group"> */}
-      {/* <label>CVV</label> */}
+  
       <Components.Input
         type="password"
         value={cvv}
@@ -236,15 +209,13 @@ const CardPaymentForm = () => {
       />
       <Components.ErrorMessage>{cvvError} </Components.ErrorMessage>
 
-      {/* {cvvError && <span className="error-message">{cvvError}</span>} */}
-      {/* </div> */}
+
       <Components.Button
         className="payment-button"
         onClick={handlePaymentSubmit}
       >
         {isProcessing ? "Processing..." : "Make Payment"}
       </Components.Button>
-      {/* // </div> */}
     </>
   );
 };
@@ -264,7 +235,7 @@ const UpiPaymentForm = () => {
     setCustomerNameError("");
     setMobileNumberError("");
 
-    // const upiIdRegex = /^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,4}$/;
+   
     const upiIdRegex = /^[a-zA-Z0-9.\-_]{2,49}@[a-zA-Z._]{2,49}$/;
     const mobileNumberRegex = /^\d{10}$/;
     e.preventDefault();
@@ -292,10 +263,7 @@ const UpiPaymentForm = () => {
 
   return (
     <>
-      {/* // <div className="payment-form"> */}
-      {/* <h2>UPI Payment</h2> */}
-      {/* <div className="input-group"> */}
-      {/* <label>Customer Name</label> */}
+
       <Components.Title>UPI Payment</Components.Title>
       <Components.Input
         type="text"
@@ -304,13 +272,7 @@ const UpiPaymentForm = () => {
         placeholder="Enter your Name"
       />
       <Components.ErrorMessage>{customerNameError} </Components.ErrorMessage>
-{/* 
-      {customerNameError && (
-        <span className="error-message">{customerNameError}</span>
-      )} */}
-      {/* </div> */}
-      {/* <div className="input-group"> */}
-      {/* <label>Mobile Number</label> */}
+
       <Components.Input
         type="text"
         value={mobileNumber}
@@ -320,12 +282,7 @@ const UpiPaymentForm = () => {
       />
       <Components.ErrorMessage>{mobileNumberError}</Components.ErrorMessage>
 
-      {/* {mobileNumberError && (
-        <span className="error-message">{mobileNumberError}</span>
-      )} */}
-      {/* </div> */}
-      {/* <div className="input-group"> */}
-      {/* <label>Enter UPI ID</label> */}
+
       <Components.Input
         type="text"
         value={upiId}
@@ -334,15 +291,13 @@ const UpiPaymentForm = () => {
       />
       <Components.ErrorMessage>{upiIdError}</Components.ErrorMessage>
 
-      {/* {upiIdError && <span className="error-message">{upiIdError}</span>} */}
-      {/* </div> */}
       <Components.Button
         className="payment-button"
         onClick={handlePaymentSubmit}
       >
         {isProcessing ? "Processing..." : "Make Payment"}
       </Components.Button>
-      {/* // </div> */}
+ 
     </>
   );
 };
