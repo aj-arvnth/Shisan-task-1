@@ -58,7 +58,7 @@ const PaymentPage = () => {
                 <div className="selected-subscription">
                   <h3>{selectedTier.title} Subscription</h3>
                   <p className="price">
-                    ${selectedTier.price.toFixed(2)} / month
+                  ₹ {selectedTier.price} / month
                   </p>
                   <ul className="features">
                     {selectedTier.features.map((feature, index) => (

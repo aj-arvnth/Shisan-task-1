@@ -15,7 +15,7 @@
 .container {
   /* display: flex; */
   /* position: absolute; */
-  /* background-color: #ffffff; */
+  /* background-image: -webkit-linear-gradient(rgb(197, 184, 49),whitesmoke); */
   /* align-items: center; */
   /* justify-content: center; */
   flex-direction: column;
@@ -86,7 +86,7 @@
 
 .price {
   text-align: center;
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 900;
   margin: 20px;
 }

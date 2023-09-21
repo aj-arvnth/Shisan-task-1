@@ -95,7 +95,7 @@ function BuyerLogin() {
             <OutlinedInput
               required
               id="outlined-adornment-password"
-              type={showPassword ? "password" : "text"}
+              type={showPassword ?  "text" : "password"}
               name="password"
               value={formData.password}
               onChange={handleInputChange}

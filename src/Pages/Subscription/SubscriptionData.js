@@ -1,17 +1,17 @@
 const tiers = [
     {
       title: "Basic",
-      price: 9.99,
+      price: 399,
       features: ["Feature 1", "Feature 2", "Feature 3"],
     },
     {
       title: "Standard",
-      price: 19.99,
+      price: 699,
       features: ["Feature 1", "Feature 2", "Feature 3", "Feature 4"],
     },
     {
       title: "Premium",
-      price: 29.99,
+      price: 1299,
       features: [
         "Feature 1",
         "Feature 2",

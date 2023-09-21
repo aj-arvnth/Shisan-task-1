@@ -4,11 +4,9 @@ import { Link } from "react-router-dom";
 import styles from "./SubscriptionTier.module.css";
 import tiers from "./SubscriptionData";
 import SubscriptionNavbar from "./SubscriptionNavbar";
-import PersonIcon from '@mui/icons-material/Person';
 
 const SubscriptionPage = () => {
   const [selectedTierIndex, setSelectedTierIndex] = useState(null);
-
   const handleTierSelection = (index) => {
     setSelectedTierIndex((prevIndex) => (prevIndex === index ? null : index));
   };
@@ -21,8 +19,7 @@ const SubscriptionPage = () => {
           <SubscriptionTier
             key={index}
             title={tier.title}
-           
-            price={tier.price}
+            price= {`₹ ${tier.price} / month`}
             features={tier.features}
             isSelected={index === selectedTierIndex}
             onSelect={() => handleTierSelection(index)}
