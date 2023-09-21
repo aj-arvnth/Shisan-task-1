@@ -16,7 +16,7 @@ min-height: 400px;
 `;
 
 export const ErrorMessage = ({ children }) => {
-  return <span style={{ color: "red", fontSize: "12px" }}>{children}</span>;
+  return <span style={{ color: "red", fontSize: "12px"}}>{children}</span>;
 };
 
 export const SignUpContainer = styled.div`

@@ -2,23 +2,23 @@ import React, { useState } from "react";
 import * as Components from "../../Components/UserComponents";
 import { useNavigate } from "react-router-dom";
 import { Toaster, toast } from "react-hot-toast";
+import { TextField } from "@mui/material";
+import Alert from "@mui/material/Alert";
+
 
 function ForgetPass() {
-  const [signIn, toggle] = React.useState(true);
+  const [signIn] = React.useState(true);
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
     username: "",
   });
 
-  const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-
   const [formErrors, setFormErrors] = useState({});
 
-  const handleInputChange = async (event) => {
+  const handleInputChange =  (event) => {
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value });
-    await delay(10);
     setFormErrors((prevErrors) => ({ ...prevErrors, [name]: "" }));
   };
 
@@ -57,31 +57,50 @@ function ForgetPass() {
       <Components.SignInContainer signinIn={signIn}>
         <Components.Form>
           <Components.Title>Forget Password</Components.Title>
-          <Components.Input
+          <TextField
+            required
+            style={{ width: 400 }}
             type="text"
+            label="Username "
             name="username"
-            placeholder="Username"
             value={formData.username}
             onChange={handleInputChange}
           />
           {formErrors.username && (
-            <Components.ErrorMessage>
-              {formErrors.username}
-            </Components.ErrorMessage>
+            <Alert
+              severity="error"
+              style={{
+                backgroundColor: "transparent",
+                textAllign: "center",
+                color: "#8B0000",
+              }}
+            >
+              {formErrors.username}{" "}
+            </Alert>
           )}
-          <Components.Input
+          <div style={{ margin: "13px 0" }}></div>
+          <TextField
+            required
+            style={{ width: 400 }}
             type="email"
+            label="Email "
             name="email"
-            placeholder="Email : user@gmail.com"
             value={formData.email}
             onChange={handleInputChange}
           />
           {formErrors.email && (
-            <Components.ErrorMessage>
-              {formErrors.email}
-            </Components.ErrorMessage>
+            <Alert
+              severity="error"
+              style={{
+                backgroundColor: "transparent",
+                textAllign: "center",
+                color: "#8B0000",
+              }}
+            >
+              {formErrors.email}{" "}
+            </Alert>
           )}
-
+          <div style={{ margin: "10px 0" }}></div>
           <Components.Button onClick={handleSignIn}>Submit</Components.Button>
           <Toaster position="top-right" />
         </Components.Form>

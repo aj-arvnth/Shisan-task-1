@@ -7,10 +7,10 @@ export const Container = styled.div`
   border-radius: 05px;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25);
   position: absolute;
-  margin: 105px 50px 0px 250px;
+  margin: 30px 50px 0px 250px;
   overflow: hidden;
   width: 1000px;
-  height: 500px;
+  height: 650px;
   max-width: 100%;
   min-height: 400px;
 `;
@@ -70,7 +70,7 @@ export const Navbar = styled.h2`
 
 export const Title = styled.h2`
   font-weight: bold;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 `;
 
 export const Input = styled.input`

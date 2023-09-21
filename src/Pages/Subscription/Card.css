@@ -1,0 +1,125 @@
+.card {
+  width: 51vh;
+  height: 62vh;
+  padding: 50px;
+  margin: 20px;
+  cursor: pointer;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  position: relative;
+  perspective: 1000px;
+  transform: perspective(1000px) translateY(0);
+  transform-style: preserve-3d;
+  transition: transform 0.8s ease-in-out;
+}
+
+.container {
+  /* display: flex; */
+  /* position: absolute; */
+  /* background-color: #ffffff; */
+  /* align-items: center; */
+  /* justify-content: center; */
+  flex-direction: column;
+  padding: 20px 20px 20px 10px;
+  margin: 10px 0px 0px 0px ;
+  height: 75vh;
+  width: 60vh;
+}
+
+.tickMark {
+    position: absolute;
+    color: green;
+    font-size: 1.2rem;
+ }
+ 
+.dark{
+  border-color: green;
+  background-color: #f0f8f0;
+  color: green;
+  transform: scale(0.8s);
+}
+.light{
+    background-color: #fbfbfb;
+    color: #272727;
+}
+.selected{
+  border-color: green;
+  background-color: #f0f8f0;
+  color: green;
+  transform: scale(1.05);
+}
+.card-wrapper:hover .card {
+  transform: rotateY(179deg);
+  z-index: 2;
+}
+.card-wrapper:hover .card .text-overlay {
+  opacity: 1;
+  
+}
+.card-wrapper:hover .card .purchase-button-container {
+  opacity: 0;
+  transform-style: preserve-3d;
+  z-index: 1;
+}
+
+.text-overlay {
+  transform: perspective(1000px) rotateY(179deg) translateY(0) translateZ(80px);
+  opacity: 0;
+  z-index: -1;
+  transition: transform 0.8s ease-in-out, opacity 1s ease;
+  pointer-events: none;
+  width: 100%;
+  perspective: inherit;
+  height: 100%;
+}
+
+.front {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 900;
+  margin: 20px;
+}
+
+.back {
+    font-size: 1.70rem;
+    font-weight: 500;
+  }
+
+.price {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 900;
+  margin: 20px;
+}
+
+.purchase-button-container {
+  color: indianred;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  left: 0;
+  top: 0;
+  transform: perspective(1000px) translateY(0) translateZ(80px);
+  transition: transform 0.8s ease-in-out, opacity 1s ease;
+  width: 100%;
+  height: 100%;
+}
+
+
+.details-text {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px 10px;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  color: #858585;
+  font-size: 1.5rem;
+}
+
+
+
+
+
+  

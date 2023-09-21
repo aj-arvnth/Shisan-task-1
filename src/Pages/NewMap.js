@@ -10,7 +10,7 @@ mapboxgl.accessToken =
   "pk.eyJ1IjoiYWotYXJ2bnRoIiwiYSI6ImNsbDNkZDl3YjBicjEzaXBscDF2d213MGUifQ.3REymEz7NRVoqQyO3UAwwg";
 
 const NewMap = () => {
-  const [map, setMap] = useState(null);
+  const [map, setMap] = useState();
   const [userLocation, setUserLocation] = useState(null);
   const [userAddress, setUserAddress] = useState("");
   const [startingLocation, setStartingLocation] = useState(null);
@@ -24,8 +24,9 @@ const NewMap = () => {
         center: [80.2785, 13.0827],
         zoom: 10,
       });
-
+      console.log(mapInstance);
       setMap(mapInstance);
+      console.log(map);
 
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
@@ -51,8 +52,9 @@ const NewMap = () => {
                       // Add more waypoints if needed
                     ],
                   });
-            
+                  console.log(map);
                   map.addControl(directions, "top-left");
+
                 } catch (error) {
                   console.error("Error getting address:", error);
                 }

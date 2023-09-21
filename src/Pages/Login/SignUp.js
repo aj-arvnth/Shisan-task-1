@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import * as Components from "../../Components/SignupComponents";
 import { useNavigate } from "react-router-dom";
+import { TextField } from "@mui/material";
+import Alert from "@mui/material/Alert";
 
 function SignUp() {
-  const [signIn, toggle] = React.useState(true);
+  const [signIn] = React.useState(true);
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     firstName: "",
@@ -13,14 +15,11 @@ function SignUp() {
     confirmPassword: "",
   });
 
-  const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-
   const [formErrors, setFormErrors] = useState({});
 
-  const handleInputChange = async (event) => {
+  const handleInputChange = (event) => {
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value });
-    await delay(10);
     setFormErrors((prevErrors) => ({ ...prevErrors, [name]: "" }));
   };
 
@@ -46,6 +45,8 @@ function SignUp() {
 
     if (!formData.confirmPassword) {
       errors.confirmPassword = "Confirm password is required.";
+    } else if (formData.password !== formData.confirmPassword) {
+      errors.confirmPassword = "Password and Confirm password does not match.";
     }
 
     if (Object.keys(errors).length === 0) {
@@ -63,66 +64,124 @@ function SignUp() {
       <Components.SignInContainer signinIn={signIn}>
         <Components.Form>
           <Components.Title>Sign Up</Components.Title>
-          <Components.Input
+          <TextField
+            required
+            style={{ width: 400 }}
             type="text"
+            label="First Name "
             name="firstName"
-            placeholder="First Name"
             value={formData.firstName}
             onChange={handleInputChange}
           />
           {formErrors.firstName && (
-            <Components.ErrorMessage>
-              {formErrors.firstName}
-            </Components.ErrorMessage>
+            <Alert
+              severity="error"
+              style={{
+                backgroundColor: "transparent",
+                textAllign: "center",
+                color: "#8B0000",
+              }}
+            >
+              {formErrors.firstName}{" "}
+            </Alert>
           )}
-          <Components.Input
+          <div
+            style={{ margin: formErrors.firstName ? "0px 0" : "13px 0" }}
+          ></div>
+          <TextField
+            required
+            style={{ width: 400 }}
             type="text"
+            label="Last Name "
             name="lastName"
-            placeholder="Last Name"
             value={formData.lastName}
             onChange={handleInputChange}
           />
           {formErrors.lastName && (
-            <Components.ErrorMessage>
-              {formErrors.lastName}
-            </Components.ErrorMessage>
+            <Alert
+              severity="error"
+              style={{
+                backgroundColor: "transparent",
+                textAllign: "center",
+                color: "#8B0000",
+              }}
+            >
+              {formErrors.lastName}{" "}
+            </Alert>
           )}
-          <Components.Input
+          <div
+            style={{ margin: formErrors.lastName ? "0px 0" : "13px 0" }}
+          ></div>
+          <TextField
+            required
+            style={{ width: 400 }}
             type="email"
+            label="Email "
             name="email"
-            placeholder="Email"
             value={formData.email}
             onChange={handleInputChange}
           />
           {formErrors.email && (
-            <Components.ErrorMessage>
-              {formErrors.email}
-            </Components.ErrorMessage>
+            <Alert
+              severity="error"
+              style={{
+                backgroundColor: "transparent",
+                textAllign: "center",
+                color: "#8B0000",
+              }}
+            >
+              {formErrors.email}{" "}
+            </Alert>
           )}
-          <Components.Input
+          <div style={{ margin: formErrors.email ? "0px 0" : "13px 0" }}></div>
+          <TextField
+            required
+            style={{ width: 400 }}
             type="password"
+            label="Password"
             name="password"
-            placeholder="Password"
             value={formData.password}
             onChange={handleInputChange}
           />
           {formErrors.password && (
-            <Components.ErrorMessage>
-              {formErrors.password}
-            </Components.ErrorMessage>
+            <Alert
+              severity="error"
+              style={{
+                backgroundColor: "transparent",
+                textAllign: "center",
+                color: "#8B0000",
+              }}
+            >
+              {formErrors.password}{" "}
+            </Alert>
           )}
-          <Components.Input
+          <div
+            style={{ margin: formErrors.password ? "0px 0" : "13px 0" }}
+          ></div>
+          <TextField
+            required
+            style={{ width: 400 }}
             type="password"
+            label="Confirm Password"
             name="confirmPassword"
-            placeholder="Confirm Password"
             value={formData.confirmPassword}
             onChange={handleInputChange}
           />
           {formErrors.confirmPassword && (
-            <Components.ErrorMessage>
-              {formErrors.confirmPassword}
-            </Components.ErrorMessage>
+            <Alert
+              severity="error"
+              style={{
+                backgroundColor: "transparent",
+                textAllign: "center",
+                color: "#8B0000",
+              }}
+            >
+              {formErrors.confirmPassword}{" "}
+            </Alert>
           )}
+          <div
+            style={{ margin: formErrors.confirmPassword ? "0px 0" : "13px 0" }}
+          ></div>
           <Components.Button onClick={handleSignIn}>Sign Up</Components.Button>
         </Components.Form>
       </Components.SignInContainer>
@@ -134,7 +193,9 @@ function SignUp() {
             <Components.Paragraph>
               Please fill in the necessary details to get connected.
             </Components.Paragraph>
-            <Components.GhostButton onClick={() => navigate(-1)}>Back</Components.GhostButton>
+            <Components.GhostButton onClick={() => navigate(-1)}>
+              Back
+            </Components.GhostButton>
           </Components.RightOverlayPanel>
         </Components.Overlay>
       </Components.OverlayContainer>
