@@ -1,0 +1,249 @@
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@1,700&family=Poppins:wght@400;500;600;700&display=swap");
+
+
+.fam-header p{
+  text-align: justify;
+  text-wrap: wrap;
+  font-family: "poppins", sans-serif;
+  font-size: 1rem;
+  color: var(--text-dark);
+}
+
+.fam-header span{
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-family: "Lora", serif;
+  font-style: italic;
+  color: #1469a7;
+}
+
+.fam-header{
+  margin: 30px 20px ;
+  background-color: white;
+  padding: 20px ;
+  min-height: 20vh;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.fam-main{
+  width: 100%;
+  margin-top: 30px;
+  min-height: 70vh;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 30px;
+  align-items: center;
+  justify-content: center;
+}
+
+@media screen and (max-width:1250px) {
+  .fam-main{
+  flex-direction : column;
+  gap :30px;
+  
+  }
+  .swiper{
+    min-width: 650px;
+  }
+  
+}
+
+@media screen and (max-width:650px){
+  .swiper{
+    min-width: 500px;
+    margin-left: 20px;
+   
+  }
+ 
+  .testimonial__card{
+    padding: 0 2.5rem;
+  }
+ 
+  .testimonial__card ul li{
+    font-size: 14px;
+  }
+
+  .fam-main-right {
+    max-width: 450px;
+ 
+  }
+  .fam-main-right img{
+    max-width: 450px;
+  }
+  .fam-main-right-others {
+    max-width: 450px;
+ 
+  }
+  .fam-main-right-others img{
+    max-width: 450px;
+  }
+}
+
+@media screen and (max-width:400px){
+  .swiper{
+    min-width: 365px;
+    
+   
+  }
+  .testimonial__card ul li{
+    font-size: 14px;
+  }
+
+  .fam-main-right {
+    max-width: 375px;
+  
+ 
+  }
+  .fam-main-right img{
+    max-width: 375px;
+
+  }
+  .fam-main-right-others {
+    max-width: 375px;
+  
+ 
+  }
+  .fam-main-right-others img{
+    max-width: 375px;
+
+  }
+
+
+}
+.swiper{
+  margin: 0 auto;
+  width: 50%;
+  min-height: 50vh;
+  padding: 20px ;
+  font-family: "poppins", sans-serif;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  
+}
+
+.section__container {
+  height: 55vh;
+  position: relative;
+  width: 70vw;
+}
+
+.section__header {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-family: "Lora", serif;
+  font-style: italic;
+  color: #1469a7;
+}
+.testimonial__container  {
+  text-align: center;
+  
+}
+
+.testimonial__card {
+  max-width: 500px;
+  margin: auto;
+  text-align: center;
+}
+.testimonial__card li{
+  text-align: left;
+  margin-bottom: 0.4rem;
+  font-family: "poppins", sans-serif;
+  font-size: 16px;
+  color: var(--text-dark);
+}
+
+.testimonial__card p{
+  text-align: justify;
+  margin-bottom: 0.4rem;
+  font-family: "poppins", sans-serif;
+  font-size: 16px;
+  color: var(--text-dark);
+}
+
+.about-card {
+  max-width: 650px;
+  border-radius: 05px;
+  
+  padding: 2rem;
+  margin:  auto;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  text-align: center;
+}
+.about-card p{
+  text-align: justify;
+  margin-bottom: 0.4rem;
+  font-family: "poppins", sans-serif;
+  font-size: 16px;
+  color: var(--text-dark);
+}
+
+.about-card p a{
+  text-align: justify;
+  margin-bottom: 0.4rem;
+  font-family: "poppins", sans-serif;
+  font-size: 16px;
+  color: var(--text-dark);
+}
+
+.about-card p a:hover{
+color: #1469a7;
+}
+
+
+.fam-main-right{
+  width: 557px;
+  margin: auto;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  
+}
+
+.fam-main-right img {
+  display: flex;
+  border-radius: 10px;
+  width: 557px;
+  height: 68vh;
+  opacity: 1.0;
+}
+
+.fam-main-right-others{
+ 
+  width: 557px;
+  height: 440px;
+  margin: auto;
+ 
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+}
+
+.fam-main-right-others img {
+  display: flex;
+  border-radius: 10px;
+  width: 557px;
+  height: 430px;
+  opacity: 1.0;
+}
+
+.fam-main-right-services{
+ 
+  width: 557px;
+  height: 400px;
+  margin: auto;
+  margin-left: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  
+}
+
+.fam-main-right-services img {
+  display: flex;
+  border-radius: 10px;
+  width: 557px;
+  height: 400px;
+  opacity: 1.0;
+}
+
+

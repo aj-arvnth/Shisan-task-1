@@ -1,0 +1,24 @@
+.mainbody{
+    background-image: url("../../public/IT\ Asset-Management.jpg");
+    background-repeat: no-repeat;
+    position: relative;
+    background-size: cover;
+    flex-direction: row;
+    font-family: "Montserrat", sans-serif;
+    height: 100vh;
+
+}
+
+.mainbody::before {
+    content: "";
+    display: flex;
+    
+    
+    background-color: rgba(19, 41, 94, 0.67);
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+  }
